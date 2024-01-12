@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    gap: 20px;
+}
+
+.panel{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    border-radius: 8px;
+    flex: 0.5;
+}
+
+/* .panel h3{
+  position: absolute;
+  bottom: 10px;
+} */
