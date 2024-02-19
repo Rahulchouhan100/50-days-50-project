@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1>Counter APP</h1>
+    <div>
+      <h1>Count: <span id="count">0</span></h1>
+      <button onclick="increment()" id="increment">Increment +</button>
+      <button class="decrement" onclick="decrement()">Decrement</button>
+      <input
+        type="number"
+        id="input"
+        value="1"
+        placeholder="Enter a number..."
+      /> <br>
+
+      <button onclick="reset()">Reset</button>
+    </div>
+    <script>
+      const initialCount = document.querySelector("#count");
+      const incrementBtn = document.querySelector("#increment");
+      const decrementBtn = document.querySelector(".decrement");
+      const input = document.querySelector("#input");
+      let value = 1;
+
+      function increment() {
+        let currentCount = parseInt(initialCount.innerHTML);
+        initialCount.innerHTML = currentCount + value;
+      }
+
+      function decrement() {
+        let currentCount = parseInt(initialCount.innerHTML);
+        if (currentCount > 0) {
+          initialCount.innerHTML = currentCount - value;
+        }
+      }
+      input.addEventListener("input", (e) => {
+        value = parseInt(e.target.value);
+      });
+
+      function reset() {
+        initialCount.innerHTML = initialCount.innerHTML * 0;
+      }
+    </script>
+  </body>
+</html>

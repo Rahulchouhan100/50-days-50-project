@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #inputbox:disabled,
+    .btn {
+      cursor: not-allowed;
+    }
+  </style>
+  <body>
+    <h1>Guess the number between 1 to 100</h1>
+    <form id="myForm" onsubmit="handleSubmit(event)">
+      <input
+        type="number"
+        style="width: 200px; padding: 4px 0"
+        value=""
+        id="inputbox"
+        min="1"
+        max="100"
+      />
+      <button type="submit" class="btn">Submit</button>
+    </form>
+
+    <br />
+    <p>your guess : <span class="userTypedNumber"></span></p>
+    <span class="guessedNumber"></span>
+    <span class="userHigh"></span>
+
+    <script>
+      const inputBox = document.querySelector("#inputbox");
+      const guessedNumber = document.querySelector(".guessedNumber");
+      const userTypedNumber = document.querySelector(".userTypedNumber");
+      const btn = document.querySelector(".btn");
+      const userHigh = document.querySelector(".userHigh");
+      let value = 0;
+      let array = [];
+      let secretNum = Math.floor(Math.random() * 100) + 1;
+      function handleSubmit(e) {
+        e.preventDefault();
+        array.push(value);
+        userTypedNumber.innerHTML = `${array}`;
+        if (value === 0) {
+          alert("enter number between 1 to 100");
+        }
+        if (secretNum === value) {
+          guessedNumber.innerHTML = `hurray you guessed the correct Number ${value} &#129332;`;
+          inputBox.setAttribute("disabled", true);
+          btn.setAttribute("disabled", true);
+          userHigh.innerHTML = "";
+        } else if (value > secretNum) {
+          userHigh.innerHTML = `number is too high &#128640;`;
+        } else if (value < secretNum) {
+          userHigh.innerHTML = `number is low  &#128517;`;
+        }
+        inputBox.value = "";
+      }
+      inputBox.addEventListener("input", (e) => {
+        value = parseInt(e.target.value);
+      });
+    </script>
+  </body>
+</html>
